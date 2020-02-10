@@ -23,7 +23,11 @@ class HashTable:
 
         You may replace the Python hash with DJB2 as a stretch goal.
         '''
-        return hash(key)
+        hash = 51020
+        for x in key:
+            hash = (hash * 33) + ord(x)
+        return hash
+        
 
 
     def _hash_djb2(self, key):
@@ -40,6 +44,7 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         within the storage capacity of the hash table.
         '''
+            
         return self._hash(key) % self.capacity
 
 
